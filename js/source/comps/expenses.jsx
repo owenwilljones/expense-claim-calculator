@@ -1,5 +1,6 @@
 var React = require('react'),
-	reactDOM = require('react-dom');
+	reactDOM = require('react-dom'),
+	LineItem = require('./line-item.jsx');
 
 //The expenses component. Acts as a parent to all other elements and the controller for the application
 var Expenses = React.createClass({
@@ -23,6 +24,7 @@ var Expenses = React.createClass({
 		liContainer.appendChild(newLI);
 		//Add this new container's id to the liIDs state array
 		this.statePush(newLI.id, this.state.liIDs, 'liIDs');
+		reactDOM.render(<LineItem itemNo={liNo} itemId={newLI.id} />, newLI);
 	},
 
 	//A function for pushing new values to the different state arrays dynamically
