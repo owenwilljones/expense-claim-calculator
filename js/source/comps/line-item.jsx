@@ -12,8 +12,34 @@ var LineItem = React.createClass({
 				'Computer Consumables': true,
 				'Subsistence': true,
 				'Overseas Travel': false
+			},
+			intDate: {
+				'day': '',
+				'month': '',
+				'year': ''
 			}
 		};
+	},
+
+	componentWillMount: function() {
+		if(this.props.lastDate) {
+			this.setState({
+				intDate: {
+					day: this.props.lastDate.getElementsByClassName('day')[0].value,
+					month: this.props.lastDate.getElementsByClassName('month')[0].value,
+					year: this.props.lastDate.getElementsByClassName('year')[0].value
+				}
+			});
+		} else {
+			var d = new Date();
+			this.setState({
+				intDate: {
+					day: d.getDate(),
+					month: d.getMonth() + 1,
+					year: d.getFullYear()
+				}
+			});
+		}
 	},
 
 	updateType: function(event) {
@@ -43,6 +69,11 @@ var LineItem = React.createClass({
 		}
 		return (
 			<div>
+			date: <span className='date'>
+			<input type='text' className='day' defaultValue={this.state.intDate.day} /> / 
+			<input type='text' className='month' defaultValue={this.state.intDate.month} /> / 
+			<input type='text' className='year' defaultValue={this.state.intDate.year} />
+			</span>
 			expense type: <select onChange={this.updateType}>
 			<option></option>
 			{opts}
