@@ -2,7 +2,7 @@ var React = require('react'),
 	reactDOM = require('react-dom'),
 	LineItem = require('./line-item.jsx');
 
-//The expenses component. Acts as a parent to all other elements and the controller for the application
+//The expenses component. Acts as the controller for the application
 var Expenses = React.createClass({
 	getInitialState: function() {
 		//All values are stored in parallel arrays associated with their respective line item
