@@ -24,17 +24,22 @@ var Expenses = React.createClass({
 		newLI.className = 'lineItem';
 		liContainer.appendChild(newLI);
 		//Add this new container's id to the liIDs state array
-		this.statePush(newLI.id, this.state.liIDs, 'liIDs');
+		this.statePush(newLI.id, liNo, 'liIDs');
 
 		reactDOM.render(<LineItem itemNo={liNo} itemId={newLI.id} callback={this.updateTotal} lastDate={lastDate[lastDate.length-1]} />, newLI);
 	},
 
 	//A function for pushing new values to the different state arrays dynamically
-	statePush: function(val, stateArr, stateName) {
-		var update = {};
-		stateArr.push(val);
+	statePush: function(val, index, stateName) {
+		var update = {}, stateArr = this.state[stateName];
+		stateArr[index] = val;
 		update[stateName] = stateArr;
 		this.setState(update);
+	},
+
+	//Updates the totals based on changes to the gross field on line items
+	updateTotal: function(gross, liNo, vat) {
+		this.statePush(gross, liNo, 'gross');
 	},
 
 	render: function() {

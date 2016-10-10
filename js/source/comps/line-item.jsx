@@ -116,7 +116,7 @@ var LineItem = React.createClass({
 		if(isNaN(val) || val < 0) {
 			event.target.value = 0;
 			error.innerHTML = 'Please enter a number greater than 0';
-		}
+		} else this.props.callback(val, this.props.itemNo, this.state.type);
 	},
 
 	render: function() {
