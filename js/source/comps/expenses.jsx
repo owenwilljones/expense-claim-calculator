@@ -7,7 +7,6 @@ var Expenses = React.createClass({
 	getInitialState: function() {
 		//All values are stored in parallel arrays associated with their respective line item
 		return {
-			liIDs: [],
 			gross: [0],
 			net: [0],
 			vat: [0]
@@ -23,10 +22,8 @@ var Expenses = React.createClass({
 		newLI.id = 'li_' + liNo;
 		newLI.className = 'lineItem';
 		liContainer.appendChild(newLI);
-		//Add this new container's id to the liIDs state array
-		this.statePush(newLI.id, liNo, 'liIDs');
 
-		reactDOM.render(<LineItem itemNo={liNo} itemId={newLI.id} callback={this.updateTotal} lastDate={lastDate[lastDate.length-1]} />, newLI);
+		reactDOM.render(<LineItem itemNo={liNo} itemId={newLI.id} callback={this.updateTotal} remove={this.removeLineItem} lastDate={lastDate[lastDate.length-1]} />, newLI);
 	},
 
 	//A function for pushing new values to the different state arrays dynamically
@@ -39,14 +36,21 @@ var Expenses = React.createClass({
 
 	//Updates the totals based on changes to the gross field on line items
 	updateTotal: function(gross, liNo, rate) {
-		console.log(rate);
 		var vat = (rate == 'true') ? Math.round((gross / 6) * 100) / 100 : 0,
 			net = Math.round((gross - vat) * 100) / 100;
-			console.log(vat);
 		this.statePush(gross, liNo, 'gross');
 		this.statePush(net, liNo, 'net');
 		this.statePush(vat, liNo, 'vat');
 
+	},
+
+	//Remove the triggered line item from the DOM and passes 0 to all totals from that line item
+	removeLineItem: function(liId, liNo) {
+		var li = document.getElementById(liId);
+		this.statePush(0, liNo, 'gross');
+		this.statePush(0, liNo, 'net');
+		this.statePush(0, liNo, 'vat');
+		li.remove();
 	},
 
 	render: function() {

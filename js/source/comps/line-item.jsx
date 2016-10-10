@@ -120,7 +120,13 @@ var LineItem = React.createClass({
 		if(isNaN(gross.value) || gross.value < 0) {
 			gross.value = 0;
 			error.innerHTML = 'Please enter a number greater than 0';
-		} else this.props.callback(gross.value, this.props.itemNo, this.state.type);
+		}
+		this.props.callback(gross.value, this.props.itemNo, this.state.type);
+	},
+
+	//Triggers the removal function in expenses
+	triggerRemove: function() {
+		this.props.remove(this.props.itemId, this.props.itemNo);
 	},
 
 	render: function() {
@@ -143,6 +149,7 @@ var LineItem = React.createClass({
 			</select>
 			description: <input type='text' onChange={this.updateDesc} />
 			Gross Expense: £<input type='text' className='gross' onChange={this.triggerCallback} disabled />
+			<button onClick={this.triggerRemove}>Remove Line Item</button>
 			<p className='error'></p>
 			</div>
 		);
