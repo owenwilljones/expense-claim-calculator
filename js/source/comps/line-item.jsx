@@ -89,6 +89,7 @@ var LineItem = React.createClass({
 	updateType: function(event) {
 		this.setState({type: event.target.value}, function() {
 			this.enableGross();
+			this.triggerCallback();
 		});
 	},
 
@@ -109,14 +110,17 @@ var LineItem = React.createClass({
 	},
 
 	//Triggers the callback prop and sends the gross value back to expenses for processing
-	triggerCallback: function(event) {
+	triggerCallback: function() {
 		var error = document.getElementsByClassName('error')[0],
-			val = event.target.value;
+			container = document.getElementById(this.props.itemId),
+			gross = container.getElementsByClassName('gross')[0];
+			//Round up the value to 2 dp on the input
+			gross.value = Math.round(gross.value * 100) / 100;
 		//If the gross isn't a number or is less than 0, an error is displayed and the total is updated with a 0 for that line item
-		if(isNaN(val) || val < 0) {
-			event.target.value = 0;
+		if(isNaN(gross.value) || gross.value < 0) {
+			gross.value = 0;
 			error.innerHTML = 'Please enter a number greater than 0';
-		} else this.props.callback(val, this.props.itemNo, this.state.type);
+		} else this.props.callback(gross.value, this.props.itemNo, this.state.type);
 	},
 
 	render: function() {

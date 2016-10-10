@@ -38,8 +38,15 @@ var Expenses = React.createClass({
 	},
 
 	//Updates the totals based on changes to the gross field on line items
-	updateTotal: function(gross, liNo, vat) {
+	updateTotal: function(gross, liNo, rate) {
+		console.log(rate);
+		var vat = (rate == 'true') ? Math.round((gross / 6) * 100) / 100 : 0,
+			net = Math.round((gross - vat) * 100) / 100;
+			console.log(vat);
 		this.statePush(gross, liNo, 'gross');
+		this.statePush(net, liNo, 'net');
+		this.statePush(vat, liNo, 'vat');
+
 	},
 
 	render: function() {
@@ -52,9 +59,9 @@ var Expenses = React.createClass({
 		return (
 			<div id='expenseInner'>
 			<div id='totals'>
-			Net: <span id='net'>{this.state.net.reduce(getTotal)}</span>
-			VAT: <span id='vat'>{this.state.vat.reduce(getTotal)}</span>
-			Gross: <span id='gross'>{this.state.gross.reduce(getTotal)}</span>
+			Net: <span id='net'>£{this.state.net.reduce(getTotal)}</span>
+			VAT: <span id='vat'>£{this.state.vat.reduce(getTotal)}</span>
+			Gross: <span id='gross'>£{this.state.gross.reduce(getTotal)}</span>
 			</div>
 			<button onClick={this.newLineItem}>Add new expense</button>
 			<div id='lineItems'></div>
