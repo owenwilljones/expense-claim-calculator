@@ -5,11 +5,15 @@ html, body {
 
 body {
   background: #fffcf4;
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Roboto', sans-serif;
+  color: #161616; }
 
 .pretext {
   box-sizing: border-box;
   padding: 10px; }
+
+p, h1 {
+  margin: 0 0 15px 0; }
 
 h1 {
   text-align: center;
@@ -17,6 +21,9 @@ h1 {
   color: #560000; }
 
 #totals {
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 0 0 15px 0;
   background: #ffecaa;
   text-align: center;
   font-size: 21px; }
@@ -29,5 +36,60 @@ h1 {
   .total span {
     color: #560000;
     font-weight: bold; }
+
+button {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  color: #560000;
+  background: 0;
+  border: 1px solid;
+  padding: 7px 10px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  cursor: pointer; }
+  button:hover {
+    color: #ffffff;
+    background: #560000; }
+
+.liContainer {
+  box-sizing: border-box;
+  padding: 10px; }
+
+.lineItem {
+  margin: 0 0 15px 0;
+  border-bottom: 1px dotted; }
+
+.liField {
+  margin: 0 0 15px 0; }
+
+.field {
+  float: right;
+  text-align: right;
+  width: 170px; }
+
+input[type='text'] {
+  color: #161616;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  padding: 1px 2px;
+  max-width: 100%;
+  box-sizing: border-box; }
+  input[type='text'].gross {
+    width: 155px; }
+
+.date input {
+  width: 25px;
+  margin: 0 5px; }
+.date .year {
+  width: 42px; }
+
+select {
+  color: #161616;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  background: #fff4f4;
+  width: 100%;
+  box-sizing: border-box; }
 
 /*# sourceMappingURL=style.css.map */

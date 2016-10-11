@@ -2,10 +2,27 @@ $bg: #fffcf4;
 $red: #560000;
 $lred: #fff4f4;
 $lyellow: #ffecaa;
+$black: #161616;
 
 @mixin wrap() {
 	box-sizing: border-box;
 	padding: 10px;
+}
+
+@mixin margins() {
+	margin: 0 0 15px 0;
+}
+
+@mixin radius($r) {
+	-webkit-border-radius: $r;
+	-moz-border-radius: $r;
+	border-radius: $r;
+}
+
+@mixin fieldStyle() {
+	color:$black;
+	font-size: 14px;
+	font-family: 'Roboto', sans-serif;
 }
 
 html, body {
@@ -17,10 +34,15 @@ html, body {
 body {
 	background: $bg;
 	font-family: 'Roboto', sans-serif;
+	color:$black;
 }
 
 .pretext {
 	@include wrap(); 
+}
+
+p, h1 {
+	@include margins();
 }
 
 h1 {
@@ -30,6 +52,8 @@ h1 {
 }
 
 #totals {
+	@include wrap();
+	@include margins();
 	background: $lyellow;
 	text-align: center;
 	font-size: 21px;
@@ -47,4 +71,68 @@ h1 {
 		color: $red;
 		font-weight: bold;
 	}
+}
+
+button {
+	@include radius(5px);
+	color: $red;
+	background: 0;
+	border: 1px solid;
+	padding: 7px 10px;
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	cursor:pointer;
+
+	&:hover {
+		color: #ffffff;
+		background: $red;
+	}
+}
+
+.liContainer {
+	@include wrap();
+}
+
+.lineItem {
+	@include margins();
+	border-bottom: 1px dotted;
+}
+
+.liField {
+	@include margins();
+}
+
+.field {
+	float:right;
+	text-align:right;
+	width: 170px;
+}
+
+input[type='text'] {
+	@include fieldStyle();
+	padding: 1px 2px;
+	max-width: 100%;
+	box-sizing: border-box;
+
+	&.gross {
+		width:155px;
+	}
+}
+
+.date {
+	input {
+		width:25px;
+		margin: 0 5px;
+	}
+
+	.year {
+		width: 42px;
+	}
+}
+
+select {
+	@include fieldStyle();
+	background: $lred;
+	width: 100%;
+	box-sizing: border-box;
 }

@@ -136,18 +136,28 @@ var LineItem = React.createClass({
 		//The full line items sub-form plus an error field
 		return (
 			<div>
-			date: <span className='date'>
-			<input type='text' className='day' defaultValue={this.state.day} onChange={this.updateDate} /> / 
-			<input type='text' className='month' defaultValue={this.state.month} onChange={this.updateDate} /> / 
+			<div className='liField'>
+			Date:<span className='date field'>
+			<input type='text' className='day' defaultValue={this.state.day} onChange={this.updateDate} />/
+			<input type='text' className='month' defaultValue={this.state.month} onChange={this.updateDate} />/
 			<input type='text' className='year' defaultValue={this.state.year} onChange={this.updateDate} />
 			</span>
-			expense type: <select onChange={this.updateType}>
+			</div>
+			<div className='liField'>
+			Expense Type:<span className='field'>
+			<select onChange={this.updateType}>
 			<option></option>
 			{opts}
 			</select>
-			description: <input type='text' onChange={this.updateDesc} />
-			Gross Expense: £<input type='text' className='gross' onChange={this.triggerCallback} defaultValue='0' disabled />
-			<button onClick={this.triggerRemove}>Remove Line Item</button>
+			</span>
+			</div>
+			<div className='liField'>
+			Description:<span className='field'><input type='text' onChange={this.updateDesc} /></span>
+			</div>
+			<div className='liField'>
+			Gross Expense:<span className='field'>£ <input type='text' className='gross' onChange={this.triggerCallback} defaultValue='0' disabled /></span>
+			</div>
+			<button onClick={this.triggerRemove}>Remove Expense</button>
 			<p className='error'></p>
 			</div>
 		);

@@ -97,8 +97,10 @@ var Expenses = React.createClass({
 			<span className='total'>VAT: <span id='vat'>£{this.cleanFigure(this.state.vat)}</span></span>
 			<span className='total'>Gross: <span id='gross'>£{this.cleanFigure(this.state.gross)}</span></span>
 			</div>
+			<div className='liContainer'>
 			<div id='lineItems'></div>
-			<button onClick={this.newLineItem}>Add new expense</button>
+			<button onClick={this.newLineItem}>Add New Expense</button>
+			</div>
 			</div>
 		);
 	}
