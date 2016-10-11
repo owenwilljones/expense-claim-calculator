@@ -157,6 +157,7 @@ var LineItem = React.createClass({
 			<div className='liField'>
 			Gross Expense:<span className='field'>£ <input type='text' className='gross' onChange={this.triggerCallback} defaultValue='0' disabled /></span>
 			</div>
+			<div className='clear'></div>
 			<button onClick={this.triggerRemove}>Remove Expense</button>
 			</div>
 		);

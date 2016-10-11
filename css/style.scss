@@ -8,6 +8,7 @@ $black: #161616;
 @mixin wrap() {
 	box-sizing: border-box;
 	padding: 10px;
+	text-align:center;
 }
 
 @mixin margins() {
@@ -24,6 +25,7 @@ $black: #161616;
 	color:$black;
 	font-size: 14px;
 	font-family: 'Roboto', sans-serif;
+	max-width:100%;
 }
 
 html, body {
@@ -102,6 +104,7 @@ button {
 
 .liField {
 	@include margins();
+	text-align: left;
 }
 
 .field {
@@ -113,7 +116,6 @@ button {
 input[type='text'] {
 	@include fieldStyle();
 	padding: 1px 2px;
-	max-width: 100%;
 	box-sizing: border-box;
 
 	&.gross {
@@ -135,10 +137,75 @@ input[type='text'] {
 select {
 	@include fieldStyle();
 	background: $lred;
-	width: 100%;
 	box-sizing: border-box;
 }
 
 .error {
 	color: $error;
+}
+
+.clear {
+	&:after {
+		display:block;
+		content: '';
+		clear:both;
+	}
+}
+
+@media only screen and (min-width: 620px) {
+	h1 {
+		font-size: 50px;
+	}
+
+	#totals {
+		font-size: 28px;
+	}
+
+	.liField {
+		display: inline-block;
+
+		&:nth-child(odd) {
+			float:left;
+			clear: left;
+		}
+
+		&:nth-child(even) {
+			float:right;
+			clear: right;
+		}
+	}
+
+	.field {
+		float:none;
+		margin-left: 10px;
+	}
+}
+
+@media only screen and (min-width: 1092px) {
+	.pretext, .liContainer {
+		width: 1092px;
+		margin: 0 auto;
+	}
+
+	.liContainer {
+		text-align: left;
+	}
+
+	.liField {
+		margin-left: 15px;
+
+		&:nth-child(odd), &:nth-child(even) {
+			float:none;
+			clear:none;
+		}
+
+		&:first-child {
+			margin-left: 0;
+		}
+	}
+
+	select, input[type='text'] {
+		max-width: 175px;
+	}
+
 }
