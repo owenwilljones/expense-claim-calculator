@@ -58,6 +58,7 @@ button {
 
 .lineItem {
   margin: 0 0 15px 0;
+  padding-bottom: 10px;
   border-bottom: 1px dotted; }
 
 .liField {
@@ -91,5 +92,8 @@ select {
   background: #fff4f4;
   width: 100%;
   box-sizing: border-box; }
+
+.error {
+  color: #fc0505; }
 
 /*# sourceMappingURL=style.css.map */

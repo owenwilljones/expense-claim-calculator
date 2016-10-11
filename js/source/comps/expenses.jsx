@@ -99,6 +99,7 @@ var Expenses = React.createClass({
 			</div>
 			<div className='liContainer'>
 			<div id='lineItems'></div>
+			<p className='error'></p>
 			<button onClick={this.newLineItem}>Add New Expense</button>
 			</div>
 			</div>

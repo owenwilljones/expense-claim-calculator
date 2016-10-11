@@ -1,6 +1,7 @@
 $bg: #fffcf4;
 $red: #560000;
 $lred: #fff4f4;
+$error: #fc0505;
 $lyellow: #ffecaa;
 $black: #161616;
 
@@ -95,6 +96,7 @@ button {
 
 .lineItem {
 	@include margins();
+	padding-bottom: 10px;
 	border-bottom: 1px dotted;
 }
 
@@ -135,4 +137,8 @@ select {
 	background: $lred;
 	width: 100%;
 	box-sizing: border-box;
+}
+
+.error {
+	color: $error;
 }

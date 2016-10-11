@@ -158,7 +158,6 @@ var LineItem = React.createClass({
 			Gross Expense:<span className='field'>£ <input type='text' className='gross' onChange={this.triggerCallback} defaultValue='0' disabled /></span>
 			</div>
 			<button onClick={this.triggerRemove}>Remove Expense</button>
-			<p className='error'></p>
 			</div>
 		);
 	}
