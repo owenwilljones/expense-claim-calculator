@@ -5,7 +5,7 @@ var gulp = require('gulp'),
 	source = require('vinyl-source-stream'),
 	buffer = require('vinyl-buffer');
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['prod-mode', 'watch']);
 
 gulp.task('watch', function() {
 	gulp.watch('source/**/*.*', ['package']);
@@ -23,4 +23,8 @@ gulp.task('package', function() {
 		  .pipe(buffer())
 		  .pipe(uglify())
 		  .pipe(gulp.dest('./output'));
+});
+
+gulp.task('prod-mode', function() {
+	process.env.NODE_ENV = 'production';
 });
