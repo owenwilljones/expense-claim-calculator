@@ -133,7 +133,7 @@ select {
     text-align: left; }
 
   .liField {
-    margin-left: 15px; }
+    margin-left: 14px; }
     .liField:nth-child(odd), .liField:nth-child(even) {
       float: none;
       clear: none; }
