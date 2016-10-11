@@ -3,4 +3,31 @@ html, body {
   padding: 0;
   width: 100%; }
 
+body {
+  background: #fffcf4;
+  font-family: 'Roboto', sans-serif; }
+
+.pretext {
+  box-sizing: border-box;
+  padding: 10px; }
+
+h1 {
+  text-align: center;
+  font-size: 43px;
+  color: #560000; }
+
+#totals {
+  background: #ffecaa;
+  text-align: center;
+  font-size: 21px; }
+
+.total {
+  padding-right: 10px;
+  display: inline-block; }
+  .total:last-child {
+    padding: 0; }
+  .total span {
+    color: #560000;
+    font-weight: bold; }
+
 /*# sourceMappingURL=style.css.map */

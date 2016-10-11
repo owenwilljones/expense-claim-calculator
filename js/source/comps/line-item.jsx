@@ -114,8 +114,6 @@ var LineItem = React.createClass({
 		var error = document.getElementsByClassName('error')[0],
 			container = document.getElementById(this.props.itemId),
 			gross = container.getElementsByClassName('gross')[0];
-			//Round up the value to 2 dp on the input
-			gross.value = Math.round(gross.value * 100) / 100;
 		//If the gross isn't a number or is less than 0, an error is displayed and the total is updated with a 0 for that line item
 		if(isNaN(gross.value) || gross.value < 0) {
 			gross.value = 0;
@@ -148,7 +146,7 @@ var LineItem = React.createClass({
 			{opts}
 			</select>
 			description: <input type='text' onChange={this.updateDesc} />
-			Gross Expense: £<input type='text' className='gross' onChange={this.triggerCallback} disabled />
+			Gross Expense: £<input type='text' className='gross' onChange={this.triggerCallback} defaultValue='0' disabled />
 			<button onClick={this.triggerRemove}>Remove Line Item</button>
 			<p className='error'></p>
 			</div>
