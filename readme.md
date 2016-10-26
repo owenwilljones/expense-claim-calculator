@@ -2,7 +2,7 @@
 
 Calculate the total Gross, VAT and Net costs for multiple line items.
 
-[Click here to see a demo](http://owjones.bitbucket.org)
+[Click here to see a demo](https://owenwilljones.github.io/expense-claim-calculator/)
 
 ##Usage##
 
